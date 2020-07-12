@@ -18,7 +18,7 @@ app.set('view engine','ejs');
 
 //inside views look for file index ??
 app.get('/',(req,res)=>{
-    res.render('index');
+    res.render('pages/index');
 })
 
 // for testing
@@ -26,6 +26,9 @@ app.get('/hello',(req,res)=>{
     res.render('index');
 })
 
+app.get('/searches/new',(req,res)=>{
+    res.render('pages/searches/new');
+})
 
 
 
