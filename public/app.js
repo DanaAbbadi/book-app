@@ -6,3 +6,15 @@ function myFunction() {
       x.style.display = "block";
     }
   }
+
+  for(let i=0 ; i<10 ; i++){
+  $(`#${i}`).on('click', function(){
+    $(`.${i}`).css("display", "inline");
+  })
+}
+
+
+
+
+
+

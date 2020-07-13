@@ -18,7 +18,7 @@
         max-width: 480px;
         margin: auto;
         background-color: rgba(105, 102, 102,0.7);
-        height: 500px;
+        /* height: 500px; */
         color: white;
         border-radius: 10px;
       }
@@ -125,7 +125,9 @@ form #label{
     background-color:#d8d8d8;
 }
 
-
+#selectForm{
+  display: none;
+}
 
 
 

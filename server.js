@@ -6,7 +6,8 @@ const superagent = require('superagent');
 const { request } = require('express');
 const app = express();
 const PORT = process.env.PORT;
-
+const pg = require('pg');
+const client = new pg.Client(process.env.DATABASE_URL);
 // to link the public folder 
 app.use(express.static('./public')); 
 
@@ -18,14 +19,29 @@ app.use(express.urlencoded({extended:true}));
 app.set('view engine','ejs');
 
 //inside views look for file index ??
-app.get('/',(req,res)=>{
-    res.render('pages/index');
-})
+app.get('/', getfavBooks);
+app.post('/books', addToFavBooks);
+app.get('/books/:book_id', viewBookDetails);
+
+
+    
+
 
 // for testing
 app.get('/hello',(req,res)=>{
     res.render('index');
 })
+
+
+function getfavBooks(req,res){
+    let SQL = 'SELECT * FROM books';
+    client.query(SQL)
+    .then(result =>{
+        res.render('pages/index',{results:result.rows});
+
+    })
+}
+
 
 app.get('/searches/new',(req,res)=>{
     res.render('pages/searches/new');
@@ -71,8 +87,28 @@ app.post('/searches',(req,res)=>{
 
 })
 
+function addToFavBooks(req,res){
 
+    let SQL='INSERT INTO books (image, title, authors, description, bookshelf)VALUES ($1,$2,$3,$4,$5)';
+    let value= [req.body.imageurl, req.body.title, req.body.author , req.body.desc , req.body.shelf];
+    client.query(SQL,value)
+    .then(results => {
+        res.redirect('/');
+    })
 
+}
+
+function viewBookDetails(req,res){
+    let bookID = req.params.book_id;
+    console.log('req.params.book_id');
+    let SQL = 'SELECT * FROM books WHERE id = $1';
+    let value = [bookID];
+    client.query(SQL,value)
+    .then(results =>{
+        res.render('pages/books/details',{results:results.rows[0]});
+    })
+
+}
 
 function Book(data){
     this.title = data.volumeInfo.title;
@@ -93,7 +129,9 @@ function errors(error, req, res) {
     res.status(500).send(error);
 }
 
-
+client.connect()
+    .then(() => {
 app.listen(PORT,()=>{
     console.log(`Listening on PORT ${PORT}`);
+})
 })
