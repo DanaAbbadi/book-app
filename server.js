@@ -44,14 +44,14 @@ app.get('/searches/show',(req,res)=>{
 
 app.post('/searches',(req,res)=>{
     console.log(req.body.search);
-    let property;
+    let property='';
 
     let BOOK_API= process.env.BOOK_API;
-    if(req.body.title){property=`intitle : ${req.body.search}`;}
-    if(req.body.author){property= `inauthor : ${req.body.search}`;}
-    else property= req.body.search;
+    if(req.body.searchby==='title'){property=`intitle:${req.body.search}`;}
+    if(req.body.searchby==='author'){property= `inauthor:${req.body.search}`;}
+    // else property= req.body.search;
     // if(req.body.title && req.body.author){property=  `intitle : ${req.body.title}`}
-    let url =`https://www.googleapis.com/books/v1/volumes?q=${property}&key=${BOOK_API}`;
+    let url =`https://www.googleapis.com/books/v1/volumes?q=20%+${property}`;
     let allBooks;
 
     superagent.get(url)
@@ -76,7 +76,7 @@ app.post('/searches',(req,res)=>{
 
 function Book(data){
     this.title = data.volumeInfo.title;
-    this.image = data.volumeInfo.imageLinks.smallThumbnail||`https://i.imgur.com/J5LVHEL.jpg`;
+    this.image = (data.volumeInfo.imageLinks)?data.volumeInfo.imageLinks.thumbnail : '';
     this.authors = data.volumeInfo.authors;
     this.desc = data.volumeInfo.description; 
 }
