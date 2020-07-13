@@ -11,32 +11,43 @@
 
 <body>
     <div class="mobile-container">
-        <div class="topnav">
-            <a href="/" class="active">Best Books</a>
-            <div id="myLinks">
-                <a href="/">Home</a>
-                <a href="/searches/new">Search</a>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
-        </div>
-
-
+        <%- include('../layouts/header'); %>
         <h3 id="title">Search Results</h1>
             <div id="results">
-                <% booksData.forEach (item => { %>
+                <% booksData.forEach ((item,ind) => { %>
                 <section>
                     <img src="<%= item.image %>" alt="">
                     <h3><%= item.title %></h3>
                     <h4><%= item.authors%></h4>
                     <p><%= item.desc %></p>
+                    <button id="<%= ind%>">Select this book</button>
+
+                    <form id="selectForm" class="<%= ind%>" action="/books" method="post">
+                        <label for="fname">Book image</label>
+                        <input type="text" id="fname" name="imageurl" value= "<%= item.image %>"><br>
+
+                        <label for="fname">Book Title</label>
+                        <input type="text" id="fname" name="title" value= "<%= item.title %>"><br>
+
+                        <label for="fname">Authors</label>
+                        <input type="text" id="fname" name="author" value= "<%= item.authors %>"><br>
+
+                        <label for="fname">Book descrption</label>
+                        <input type="text" id="fname" name="desc" value= "<%= item.desc %>"><br>
+
+                        <label for="fname">Book shelf</label>
+                        <input type="text" id="fname" name="shelf" value= " "><br>
+
+                        <button id="addBookButton">Add to selcted books</button>
+                    </form>
+
                 </section>
                 <% }); %>
             </div>
     </div>
 
     </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="app.js"></script>
 </body>
 

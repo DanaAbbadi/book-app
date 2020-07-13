@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="mobile-container2">
+    <%- include('../layouts/header'); %>
+
+    <div id="results">
+        <section>
+            <h3><%= results.bookshelf %></h3>
+            <img src= <%= results.image %> alt="">
+            <h3><%= results.title %></h3>
+            <h4><%= results.authors %></h4>
+            <p><%= results.description %></p>
+
+        </section>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>
