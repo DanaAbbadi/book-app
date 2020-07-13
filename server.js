@@ -76,7 +76,7 @@ app.post('/searches',(req,res)=>{
 
 function Book(data){
     this.title = data.volumeInfo.title;
-    // this.image = data.volumeInfo.imageLinks.smallThumbnail;
+    this.image = (data.volumeInfo.imageLinks)?data.volumeInfo.imageLinks.thumbnail : '';
     this.authors = data.volumeInfo.authors;
     this.desc = data.volumeInfo.description; 
 }
