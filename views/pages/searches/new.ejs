@@ -7,12 +7,20 @@
 </head>
 <body>
     <main>
-        <form action="action_page.php" method="GET">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+        <form action="/searches" method="post">
+            <input type="text" placeholder="Search.." name="search"><br>
+            <label>
+                <input type="radio" name="title">
+                <span>By Title</span>
+            </label>
+            <label>
+                <input type="radio" name="author">
+                <span>By Author</span>
+            </label>
+            <button type="submit">Search</button>
+
         </form>
-        <button>Title</button>
-        <button>Author</button>
+        
     </main>
 </body>
 </html>
