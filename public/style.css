@@ -1,3 +1,140 @@
-* {
-    background-color: rgb(221, 248, 253);
+/* @media screen and (min-width:480px) and (max-width:767px), (max-width:480px){ */
+    *{
+        box-sizing: border-box;
+    }
+
+    .mobile-container {
+        max-width: 480px;
+        margin: auto;
+        background-color: #9b9b9b;
+        /* height: 500px; */
+        color: white;
+        border-radius: 10px;
+      }
+
+
+
+      .mobile-container2 {
+        max-width: 480px;
+        margin: auto;
+        background-color: rgba(105, 102, 102,0.7);
+        height: 500px;
+        color: white;
+        border-radius: 10px;
+      }
+      .topnav {
+        overflow: hidden;
+        background-color: #333;
+        position: relative;
+      }
+      
+      .topnav #myLinks {
+        display: none;
+      }
+      
+      .topnav a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+      }
+      
+      .topnav a.icon {
+        background: black;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      
+      .active {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+#title{
+    text-align: center;
+    background-color: rgba(105, 102, 102,0.7);
+    height: 35px;
+    line-height: 2;
+    margin-top: 0;
 }
+
+#results section img{
+    width: 50%;
+    margin: auto;}
+
+
+#results{
+    display: flex;
+    flex-direction: column;
+}
+
+#results section{
+    display: flex;
+    flex-direction: column;
+    background-color: #d8d8d8;
+    margin: 2% 15%;
+    width: 70%;
+}
+
+#results section h3{
+    
+text-align: center;
+color: black;
+
+}
+
+
+#results section h4{
+    text-align: center;
+    color: black;
+
+}
+
+#results section p{
+text-align: center;
+width:80%;
+height: 110px;
+overflow: auto;
+color: black;
+margin: auto;
+
+}
+
+form{
+    margin: 14% 26%;
+    max-width: 302px;
+    display: block;
+    line-height: 4;
+}
+
+form #bar{
+    height: 43px;
+    width: 83%;
+}
+
+
+form #label{
+    background-color:#d8d8d8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* } */

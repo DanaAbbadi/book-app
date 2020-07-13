@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css">
+        <title>Best Books</title>
+</head>
+<body>
+    <main>
+        <div class="mobile-container2">
+            <div class="topnav">
+                <a href="/" class="active">Best Books</a>
+                <div id="myLinks">
+                    <a href="/">Home</a>
+                    <a href="/searches/new">Search</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            
+        <form action="/searches" method="post">
+            <input type="text" placeholder="Enter a title or author" name="search" id="bar"><br>
+            <label class="label">
+                <input type="radio" name="title">
+                <span>By Title</span>
+            </label> <br>
+            <label class="label">
+                <input type="radio" name="author">
+                <span>By Author</span>
+            </label> <br>
+            <button type="submit">Search</button>
+
+        </form>
+    </div>
+
+    </main>
+    <script src="/app.js"></script>
+</body>
+</html>

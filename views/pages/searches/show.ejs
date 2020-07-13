@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="mobile-container">
+        <div class="topnav">
+            <a href="/" class="active">Best Books</a>
+            <div id="myLinks">
+                <a href="/">Home</a>
+                <a href="/searches/new">Search</a>
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+
+        <h3 id="title">Search Results</h1>
+            <div id="results">
+                <% booksData.forEach (item => { %>
+                <section>
+                    <img src="<%= item.image %>" alt="">
+                    <h3><%= item.title %></h3>
+                    <h4><%= item.authors%></h4>
+                    <p><%= item.desc %></p>
+                </section>
+                <% }); %>
+            </div>
+    </div>
+
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
