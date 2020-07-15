@@ -8,6 +8,9 @@ const app = express();
 const PORT = process.env.PORT;
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 // to link the public folder 
 app.use(express.static('./public')); 
 
@@ -22,15 +25,12 @@ app.set('view engine','ejs');
 app.get('/', getfavBooks);
 app.post('/books', addToFavBooks);
 app.get('/books/:book_id', viewBookDetails);
+app.put('/books/:book_ID', updateBook);
+app.delete('/books/:book_delete_ID', deleteBook);
+
 
 
     
-
-
-// for testing
-app.get('/hello',(req,res)=>{
-    res.render('index');
-})
 
 
 function getfavBooks(req,res){
@@ -45,8 +45,6 @@ function getfavBooks(req,res){
 
 app.get('/searches/new',(req,res)=>{
     res.render('pages/searches/new');
-
-
 })
 
 app.get('/searches/show',(req,res)=>{
@@ -100,7 +98,6 @@ function addToFavBooks(req,res){
 
 function viewBookDetails(req,res){
     let bookID = req.params.book_id;
-    console.log('req.params.book_id');
     let SQL = 'SELECT * FROM books WHERE id = $1';
     let value = [bookID];
     client.query(SQL,value)
@@ -109,6 +106,37 @@ function viewBookDetails(req,res){
     })
 
 }
+
+function updateBook(req,res){
+    let {image,title,author,description,bookshelf} = req.body;
+    console.log(bookshelf);
+    let id = req.params.book_ID;
+    let SQL = 'UPDATE books SET image=$1, title=$2, authors=$3, description=$4, bookshelf=$5 WHERE id=$6;';
+    let value = [image,title,author,description,bookshelf,id];
+    client.query(SQL,value)
+    .then(()=>{
+        let SQL2 = 'SELECT * FROM books WHERE id = $1';
+        let value = [id];
+        client.query(SQL2,value)
+        .then(results =>{
+            console.log(results.rows);
+            res.render('pages/books/details',{results:results.rows[0]});
+        })
+    })
+}
+
+function deleteBook(req,res){
+    let id = req.params.book_ID;
+    let SQL = 'DELETE FROM books WHERE id=$1;';
+    let value = [req.params.book_delete_ID];
+    client.query(SQL,value)
+    .then(()=>{
+            res.redirect('/');
+        })
+    }
+
+
+
 
 function Book(data){
     this.title = data.volumeInfo.title;

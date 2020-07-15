@@ -15,6 +15,14 @@ function myFunction() {
 
 
 
+$(`#toUpdateButton`).on('click', function(){
+  $(this).next().css("display", "inline");
+})
 
 
+toDeleteButton
 
+
+$(`#toDeleteButton`).on('click', function(){
+  $(this).next().css("display", "inline");
+})

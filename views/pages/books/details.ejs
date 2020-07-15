@@ -13,11 +13,42 @@
 
     <div id="results">
         <section>
-            <h3><%= results.bookshelf %></h3>
-            <img src= <%= results.image %> alt="">
+            <h3><%= results.bookshelf%> </h3>
+            <img src= <%= results.image %> >
             <h3><%= results.title %></h3>
             <h4><%= results.authors %></h4>
             <p><%= results.description %></p>
+
+            <button id="toUpdateButton">Update</button>
+            
+            <form id="updateForm" action="/books/<%= results.id %> ?_method=put" method="post">
+                <label for="fname">Book image</label>
+                <input type="text" name="image" value= "<%= results.image%>"><br>
+
+                <label for="fname">Book Title</label>
+                <input type="text" name="title" value= "<%= results.title %>"><br>
+
+                <label for="fname">Authors</label>
+                <input type="text" name="author" value= "<%= results.authors %>"><br>
+
+                <label for="fname">Book descrption</label>
+                <input type="text" name="description" value= "<%= results.description %>"><br>
+
+                <label for="fname">Book shelf</label>
+                <input type="text" name="bookshelf" value= "<%= results.bookshelf%> "><br>
+
+                <button id="addBookButton">Update Book</button>
+            </form>
+
+            <button id="toDeleteButton">Delete Book</button>
+            <form id="deleteForm" action="/books/<%= results.id %> ?_method=delete" method="post">
+                <input type="submit" name="delete" value="delete" placeholder="delete"/>
+            </form>
+            <!-- <form id="updateForm" action="/books/<%= results.id %> ?_method=put" method="post">
+                <label for="fname">Are you sure?</label>
+                <button id="DeleteBookButton">Update Book</button>
+            </form> -->
+
 
         </section>
     </div>

@@ -12,5 +12,3 @@ CREATE TABLE books (
 
 );
 
-INSERT INTO books (image, title, authors, description, bookshelf) 
-VALUES('http://books.google.com/books/content?id=Ca21d8dTAnoC&printsec=frontcover&img=1&zoom=1&edge=capi','Amman','Ahmad','dfgvjhkjlmdfyguiop','tradition');url&source=gbs_

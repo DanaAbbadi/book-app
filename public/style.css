@@ -125,7 +125,7 @@ form #label{
     background-color:#d8d8d8;
 }
 
-#selectForm{
+#selectForm,#updateForm,#deleteForm{
   display: none;
 }
 
